@@ -5,7 +5,7 @@
       "data": {
         "projects": [
           {
-            "groupId": "com.axonivy.connetor.metaproc",
+            "groupId": "com.axonivy.connector.metaproc",
             "artifactId": "metaproc-connector-demo",
             "version": "${version}",
             "type": "iar"
@@ -27,7 +27,7 @@
       "data": {
         "dependencies": [
           {
-            "groupId": "com.axonivy.connetor.metaproc",
+            "groupId": "com.axonivy.connector.metaproc",
             "artifactId": "metaproc-connector",
             "version": "${version}",
             "type": "iar"
