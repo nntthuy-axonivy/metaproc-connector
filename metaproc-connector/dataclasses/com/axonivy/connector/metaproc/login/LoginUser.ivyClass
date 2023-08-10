@@ -1,0 +1,4 @@
+LoginUser #class
+com.axonivy.connector.metaproc.login #namespace
+username String #field
+password String #field

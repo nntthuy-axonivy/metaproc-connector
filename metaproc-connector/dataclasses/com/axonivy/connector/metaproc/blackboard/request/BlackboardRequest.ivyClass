@@ -1,0 +1,16 @@
+BlackboardRequest #class
+com.axonivy.connector.metaproc.blackboard.request #namespace
+priority Integer #field
+priority PERSISTENT #fieldModifier
+blackboardStatus String #field
+blackboardStatus PERSISTENT #fieldModifier
+earliestExecutionTime String #field
+earliestExecutionTime PERSISTENT #fieldModifier
+latestExecutionTime String #field
+latestExecutionTime PERSISTENT #fieldModifier
+comment String #field
+comment PERSISTENT #fieldModifier
+data List<com.axonivy.connector.metaproc.blackboard.request.BlackboardData> #field
+data PERSISTENT #fieldModifier
+requirements String #field
+requirements PERSISTENT #fieldModifier

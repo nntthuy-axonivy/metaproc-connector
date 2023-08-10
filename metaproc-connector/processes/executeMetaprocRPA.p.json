@@ -1,0 +1,73 @@
+{
+  "format" : "10.0.0",
+  "id" : "189D9D0E4F2E57D2",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.connector.metaproc.blackboard.request.ExecuteMetaprocRPA"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "call(BlackboardRequest)",
+      "config" : {
+        "callSignature" : "call",
+        "input" : {
+          "params" : [
+            { "name" : "request", "type" : "com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest" }
+          ],
+          "map" : {
+            "out.blackboardRequestData.Blackboard" : "param.request"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "blackboardId", "type" : "String" }
+          ],
+          "map" : {
+            "result.blackboardId" : "in.blackboardId"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 },
+        "icon" : "res:/webContent/icons/metaproc.png?small"
+      },
+      "connect" : { "id" : "f4", "to" : "f3" }
+    }, {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 400, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "RestClientCall",
+      "name" : "create blackboard entry",
+      "config" : {
+        "path" : "/metarest/datagrid/blackboard",
+        "headers" : {
+          "Accept" : "application/json"
+        },
+        "bodyObjectMapping" : {
+          "param" : "in.blackboardRequestData"
+        },
+        "clientId" : "dd465626-dd32-4679-886d-b85d740a345c",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "resultType" : "com.fasterxml.jackson.databind.JsonNode",
+        "bodyInputType" : "ENTITY",
+        "responseCode" : [
+          "String id = result.get(\"Blackboard\").get(\"identifier\").asText();",
+          "ivy.task.customFields().stringField(\"blackboardId\").set(id);",
+          "out.blackboardId = id;"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 248, "y" : 64 },
+        "icon" : "res:/webContent/icons/metaproc.png"
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    } ]
+}

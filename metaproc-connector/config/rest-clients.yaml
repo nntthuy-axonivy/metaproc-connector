@@ -1,1 +1,11 @@
 RestClients:
+# Dear Bug Hunter,
+# This credential is intentionally included for educational purposes only and does not provide access to any production systems.
+# Please do not submit it as part of our bug bounty program.
+  metaproc:
+    UUID: dd465626-dd32-4679-886d-b85d740a345c
+    Url: ${ivy.var.metaproc.Url}
+    Icon: res:/webContent/icons/metaproc.png
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - com.axonivy.connector.metaproc.auth.AuthTokenFeature
