@@ -1,0 +1,119 @@
+{
+  "format" : "10.0.0",
+  "id" : "189D9DD15C14BB63",
+  "config" : {
+    "data" : "com.axonivy.connector.metaproc.Data"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "start",
+      "config" : {
+        "callSignature" : "start",
+        "outLink" : "start.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : { "id" : "f8", "to" : "f7" }
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 544, "y" : 64 }
+      }
+    }, {
+      "id" : "f7",
+      "type" : "SubProcessCall",
+      "name" : "meta:proc RPA",
+      "config" : {
+        "call" : {
+          "params" : [
+            { "name" : "request", "type" : "com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest" }
+          ],
+          "map" : {
+            "param.request.blackboardStatus" : "\"UNSATISFIED\"",
+            "param.request.comment" : "\"\"",
+            "param.request.earliestExecutionTime" : "\"2022-07-28T11:15:00.000Z\"",
+            "param.request.latestExecutionTime" : "\"2024-07-29T11:15:00.000Z\"",
+            "param.request.priority" : "100",
+            "param.request.requirements" : "\"com.metaproc.process;filter:=\\\"(&(name=CityCouncilEdit)(version>=1.0)(version<2.0))\\\"\""
+          },
+          "code" : [
+            "import com.axonivy.connector.metaproc.blackboard.request.BlackboardData;",
+            "",
+            "BlackboardData data;",
+            "",
+            "data = new BlackboardData();",
+            "data.setKey(\"firstName\");",
+            "data.setValue(\"Mike\");",
+            "param.request.data.add(data);",
+            "",
+            "data = new BlackboardData();",
+            "data.setKey(\"lastName\");",
+            "data.setValue(\"Miller\");",
+            "param.request.data.add(data);",
+            "",
+            "data = new BlackboardData();",
+            "data.setKey(\"username\");",
+            "data.setValue(\"user123\");",
+            "param.request.data.add(data);",
+            "",
+            "data = new BlackboardData();",
+            "data.setKey(\"password\");",
+            "data.setValue(\"pwd123\");",
+            "param.request.data.add(data);",
+            "",
+            "",
+            "data = new BlackboardData();",
+            "data.setKey(\"comment\");",
+            "data.setValue(\"testalex\");",
+            "param.request.data.add(data);"
+          ]
+        },
+        "processCall" : "executeMetaprocRPA:call(com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.identifier" : "result.blackboardId"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 272, "y" : 64 },
+        "icon" : "res:/webContent/icons/metaproc.png"
+      },
+      "connect" : { "id" : "f9", "to" : "f3" }
+    }, {
+      "id" : "f3",
+      "type" : "WaitEvent",
+      "name" : "wait on finish (asynch)",
+      "config" : {
+        "eventBeanClass" : "com.axonivy.connector.metaproc.poll.BlackboardPoller",
+        "eventIdConfig" : "in.identifier"
+      },
+      "visual" : {
+        "at" : { "x" : 432, "y" : 64 },
+        "labelOffset" : { "x" : 14, "y" : 34 },
+        "icon" : "res:/webContent/icons/metaproc.png?small"
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : "wait on finish (synch)",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.connector.metaproc.poll.BlackboardPoller;",
+            "",
+            "BlackboardPoller.waitOnExecuted(in.identifier);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 432, "y" : 152 },
+        "icon" : "res:/webContent/icons/metaproc.png"
+      }
+    } ]
+}
