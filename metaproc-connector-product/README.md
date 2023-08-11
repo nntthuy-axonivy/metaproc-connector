@@ -1,10 +1,14 @@
 # Axon Ivy RPA
 
-Step into a world of operational excellence with our Built-In Robotic Process Automation
-(RPA) - your organization's secret to unlocking unparalleled efficiency and precision.
-Seamlessly integrated into your existing systems, our Built-In RPA is like having a
-tireless, digital workforce at your fingertips.
+The Axon Ivy RPA (Robotic Process Automation) built-in module ushers you into a realm of unparalleled operational excellence.
+It stands as your organization's clandestine key to unlocking remarkable efficiency and unwavering precision.
+Seamlessly woven into your current systems, Axon Ivy RPA functions akin to an indefatigable digital
+workforce always within reach. This integration offers:
 
+- A foundation rooted in the meta:proc suite from meta:proc ([https://www.metaproc.com/en/](https://www.metaproc.com/en/)).
+- Streamlined automation of manual tasks across diverse systems, eliminating the necessity for pre-existing APIs.
+- Accessible via an additional, paid license key.
+- Equipped with an effortlessly replicable demo implementation, significantly curtailing integration endeavors.
 
 ## Demo
 
