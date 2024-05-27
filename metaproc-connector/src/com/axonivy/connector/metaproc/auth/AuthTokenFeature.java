@@ -1,6 +1,7 @@
 package com.axonivy.connector.metaproc.auth;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
@@ -53,11 +54,14 @@ public class AuthTokenFeature implements Feature {
               .accept(MediaType.APPLICATION_JSON).post(entity)) {
         var node = response.readEntity(ObjectNode.class);
         TOKEN = node.get("loginResult").get("token").asText();
-        TOKEN_EXPIRED_TIME = System.currentTimeMillis() + Long.valueOf(Ivy.var().get("metaproc.TokenExpiredDuration"));
+        TOKEN_EXPIRED_TIME = System.currentTimeMillis() + getExpiredDuration();
         context.getHeaders().add(TOKEN_HEADER, TOKEN);
-      } catch (Exception e) {
-        Ivy.log().error(e.getMessage());
       }
     }
+  }
+  
+  private long getExpiredDuration() {
+    var seconds = Long.valueOf(Ivy.var().get("metaproc.TokenExpiredDuration"));
+    return TimeUnit.SECONDS.toMillis(seconds);
   }
 }

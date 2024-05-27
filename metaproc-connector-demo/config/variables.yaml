@@ -6,4 +6,5 @@ Variables:
     Url: http://localhost:8080
     Username: admin
     Password: 1234
-    TokenExpiredDuration: 3600000 # Milisecond
+    # Token expiration in minutes
+    TokenExpiredDuration: 60
