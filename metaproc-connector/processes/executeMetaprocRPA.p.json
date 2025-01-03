@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "189D9D0E4F2E57D2",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -10,10 +10,10 @@
       "type" : "CallSubStart",
       "name" : "call(BlackboardRequest)",
       "config" : {
-        "callSignature" : "call",
+        "signature" : "call",
         "input" : {
           "params" : [
-            { "name" : "request", "type" : "com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest" }
+            { "name" : "request", "type" : "com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest", "desc" : "" }
           ],
           "map" : {
             "out.blackboardRequestData.Blackboard" : "param.request"
@@ -21,19 +21,23 @@
         },
         "result" : {
           "params" : [
-            { "name" : "blackboardId", "type" : "String" }
+            { "name" : "blackboardId", "type" : "String", "desc" : "" }
           ],
           "map" : {
             "result.blackboardId" : "in.blackboardId"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
         "icon" : "res:/webContent/icons/metaproc.png?small"
       },
-      "connect" : { "id" : "f4", "to" : "f3" }
+      "connect" : [
+        { "id" : "f4", "to" : "f3" }
+      ]
     }, {
       "id" : "f1",
       "type" : "CallSubEnd",
@@ -45,29 +49,38 @@
       "type" : "RestClientCall",
       "name" : "create blackboard entry",
       "config" : {
-        "path" : "/metarest/datagrid/blackboard",
-        "headers" : {
-          "Accept" : "application/json"
-        },
-        "bodyObjectMapping" : {
-          "param" : "in.blackboardRequestData"
-        },
-        "clientId" : "dd465626-dd32-4679-886d-b85d740a345c",
-        "clientErrorCode" : "ivy:error:rest:client",
         "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "resultType" : "com.fasterxml.jackson.databind.JsonNode",
-        "bodyInputType" : "ENTITY",
-        "responseCode" : [
-          "String id = result.get(\"Blackboard\").get(\"identifier\").asText();",
-          "ivy.task.customFields().stringField(\"blackboardId\").set(id);",
-          "out.blackboardId = id;"
-        ]
+        "target" : {
+          "clientId" : "dd465626-dd32-4679-886d-b85d740a345c",
+          "path" : "/metarest/datagrid/blackboard",
+          "headers" : {
+            "Accept" : "application/json"
+          }
+        },
+        "body" : {
+          "entity" : {
+            "map" : {
+              "param" : "in.blackboardRequestData"
+            }
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.fasterxml.jackson.databind.JsonNode",
+            "code" : [
+              "String id = result.get(\"Blackboard\").get(\"identifier\").asText();",
+              "ivy.task.customFields().stringField(\"blackboardId\").set(id);",
+              "out.blackboardId = id;"
+            ]
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 248, "y" : 64 },
         "icon" : "res:/webContent/icons/metaproc.png"
       },
-      "connect" : { "id" : "f2", "to" : "f1" }
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
     } ]
 }

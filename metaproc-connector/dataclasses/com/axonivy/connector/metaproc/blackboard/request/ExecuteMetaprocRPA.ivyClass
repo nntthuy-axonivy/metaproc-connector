@@ -1,6 +1,0 @@
-ExecuteMetaprocRPA #class
-com.axonivy.connector.metaproc.blackboard.request #namespace
-blackboardId String #field
-blackboardId PERSISTENT #fieldModifier
-blackboardRequestData com.axonivy.connector.metaproc.blackboard.request.BlackboardRequestData #field
-blackboardRequestData PERSISTENT #fieldModifier

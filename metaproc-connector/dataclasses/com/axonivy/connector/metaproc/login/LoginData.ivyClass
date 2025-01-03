@@ -1,3 +1,0 @@
-LoginData #class
-com.axonivy.connector.metaproc.login #namespace
-login com.axonivy.connector.metaproc.login.LoginUser #field

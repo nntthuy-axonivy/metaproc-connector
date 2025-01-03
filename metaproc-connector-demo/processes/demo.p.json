@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "189D9DD15C14BB63",
   "config" : {
     "data" : "com.axonivy.connector.metaproc.Data"
@@ -9,13 +9,14 @@
       "type" : "RequestStart",
       "name" : "start",
       "config" : {
-        "callSignature" : "start",
-        "outLink" : "start.ivp"
+        "signature" : "start"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
-      "connect" : { "id" : "f8", "to" : "f7" }
+      "connect" : [
+        { "id" : "f8", "to" : "f7" }
+      ]
     }, {
       "id" : "f1",
       "type" : "TaskEnd",
@@ -27,10 +28,8 @@
       "type" : "SubProcessCall",
       "name" : "meta:proc RPA",
       "config" : {
+        "processCall" : "executeMetaprocRPA:call(com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest)",
         "call" : {
-          "params" : [
-            { "name" : "request", "type" : "com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest" }
-          ],
           "map" : {
             "param.request.blackboardStatus" : "\"UNSATISFIED\"",
             "param.request.comment" : "\"\"",
@@ -71,7 +70,6 @@
             "param.request.data.add(data);"
           ]
         },
-        "processCall" : "executeMetaprocRPA:call(com.axonivy.connector.metaproc.blackboard.request.BlackboardRequest)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -83,21 +81,25 @@
         "at" : { "x" : 272, "y" : 64 },
         "icon" : "res:/webContent/icons/metaproc.png"
       },
-      "connect" : { "id" : "f9", "to" : "f3" }
+      "connect" : [
+        { "id" : "f9", "to" : "f3" }
+      ]
     }, {
       "id" : "f3",
       "type" : "WaitEvent",
       "name" : "wait on finish (asynch)",
       "config" : {
-        "eventBeanClass" : "com.axonivy.connector.metaproc.poll.BlackboardPoller",
-        "eventIdConfig" : "in.identifier"
+        "javaClass" : "com.axonivy.connector.metaproc.poll.BlackboardPoller",
+        "eventId" : "in.identifier"
       },
       "visual" : {
         "at" : { "x" : 432, "y" : 64 },
         "labelOffset" : { "x" : 14, "y" : 34 },
         "icon" : "res:/webContent/icons/metaproc.png?small"
       },
-      "connect" : { "id" : "f2", "to" : "f1" }
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
     }, {
       "id" : "f5",
       "type" : "Script",

@@ -1,0 +1,35 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "BlackboardRequest",
+  "namespace" : "com.axonivy.connector.metaproc.blackboard.request",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "priority",
+    "type" : "Integer",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "blackboardStatus",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "earliestExecutionTime",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "latestExecutionTime",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "comment",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "data",
+    "type" : "List<com.axonivy.connector.metaproc.blackboard.request.BlackboardData>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "requirements",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

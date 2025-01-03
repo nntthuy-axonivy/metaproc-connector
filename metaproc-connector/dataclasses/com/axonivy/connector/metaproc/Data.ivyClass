@@ -1,6 +1,0 @@
-Data #class
-com.axonivy.connector.metaproc #namespace
-identifier String #field
-identifier PERSISTENT #fieldModifier
-blackboardRequest com.axonivy.connector.metaproc.blackboard.request.BlackboardRequestData #field
-blackboardRequest PERSISTENT #fieldModifier

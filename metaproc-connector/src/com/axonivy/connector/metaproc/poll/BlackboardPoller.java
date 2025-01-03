@@ -1,10 +1,13 @@
 package com.axonivy.connector.metaproc.poll;
 
+import java.time.Duration;
+
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivyteam.ivy.process.extension.ProgramConfig;
 import ch.ivyteam.ivy.process.intermediateevent.AbstractProcessIntermediateEventBean;
 import ch.ivyteam.ivy.process.intermediateevent.IProcessIntermediateEventBeanRuntime;
 import ch.ivyteam.ivy.workflow.query.TaskQuery;
@@ -18,9 +21,15 @@ public class BlackboardPoller extends AbstractProcessIntermediateEventBean {
   }
 
   @Override
+  @SuppressWarnings("removal")
   public void initialize(IProcessIntermediateEventBeanRuntime runtime, String configuration) {
     super.initialize(runtime, configuration);
-    runtime.setPollTimeInterval(2000);
+    Duration.ofMillis(2000);
+ }
+
+  public void initialize(IProcessIntermediateEventBeanRuntime runtime, ProgramConfig configuration) {
+    super.initialize(runtime, configuration);
+    Duration.ofMillis(2000);
   }
 
   @Override

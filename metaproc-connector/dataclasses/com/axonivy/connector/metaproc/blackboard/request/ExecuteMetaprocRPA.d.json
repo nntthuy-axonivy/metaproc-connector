@@ -1,0 +1,14 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "ExecuteMetaprocRPA",
+  "namespace" : "com.axonivy.connector.metaproc.blackboard.request",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "blackboardId",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "blackboardRequestData",
+    "type" : "com.axonivy.connector.metaproc.blackboard.request.BlackboardRequestData"
+  } ]
+}
