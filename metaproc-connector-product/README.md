@@ -1,18 +1,18 @@
-# Axon Ivy RPA
+# Robotic Process Automation (RPA) with Meta:Proc
 
-The Axon Ivy RPA (Robotic Process Automation) built-in module ushers you into a realm of unparalleled operational excellence.
-It stands as your organization's clandestine key to unlocking remarkable efficiency and unwavering precision.
-Seamlessly woven into your current systems, Axon Ivy RPA functions akin to an indefatigable digital
-workforce always within reach. This integration offers:
+The integration of the RPA solution from Meta:Proc helps you automate manual tasks efficiently and reliably.
 
-- A foundation rooted in the meta:proc suite from meta:proc ([https://www.metaproc.com/en/](https://www.metaproc.com/en/)).
-- Streamlined automation of manual tasks across diverse systems, eliminating the necessity for pre-existing APIs.
-- Accessible via an additional, paid license key.
-- Equipped with an effortlessly replicable demo implementation, significantly curtailing integration endeavors.
+This extension offers you:
+
+- a solution based on the meta:proc suite from Meta:Proc ([https://www.metaproc.com/en/](https://www.metaproc.com/en/))
+- cross-system automation without the need for existing API connections
+- usage available via a paid license key
+- a preconfigured demo implementation for easy adoption in your own projects
+
 
 ## Demo
 
-The demo process is executing the RPA and is waiting on the result.
+The demo process executes the RPA and waits for the result.
 
 ![Demo Process](images/demo.png)
 
